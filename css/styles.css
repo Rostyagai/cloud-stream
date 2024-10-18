@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-block: 20px;
+  background-color: rgb(3, 3, 31);
+}
+.header__logo {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.hero-section {
+  padding: 120px 0 60px;
+  background: rgb(17, 62, 187);
+  background: radial-gradient(
+    circle,
+    rgba(17, 62, 187, 1) 0%,
+    rgba(92, 9, 121, 1) 49%,
+    rgba(30, 17, 143, 1) 100%
+  );
+  background-size: cover;
+}
+.hero-section__container {
+  text-align: center;
+}
+.hero-section__title {
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+.hero-section__descr {
+  color: #fff;
+}
+.hero-section__artist {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.chart-section {
+  padding: 40px 0 40px;
+}
+.chart-section__list {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.chart-section__item::marker {
+  background-color: rgb(19, 19, 180);
+}
+@media (max-width: 768px) {
+  .chart-section__list {
+    gap: 30px;
+  }
+}
+
+.track-card {
+  max-width: 190px;
+}
+
+@media (max-width: 768px) {
+  .track-card {
+    max-width: 220px;
+  }
+  .track-card__img {
+    width: 220px;
+    height: 220px;
+  }
+}
