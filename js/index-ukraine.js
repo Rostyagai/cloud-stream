@@ -30,7 +30,7 @@ async function getTopHits() {
   try {
     const token = await getAccessToken();
     const response = await fetch(
-      "https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks", // Corrected endpoint
+      "https://api.spotify.com/v1/playlists/37i9dQZEVXbKkidEfWYRuD/tracks", // Corrected endpoint
       {
         method: "GET",
         headers: {
