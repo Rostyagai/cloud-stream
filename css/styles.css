@@ -26,7 +26,11 @@ a {
   margin: 0 auto;
   padding-inline: 20px;
 }
-
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 8px;
+  }
+}
 .header {
   position: fixed;
   top: 0;
@@ -43,6 +47,12 @@ a {
   font-size: 24px;
   font-weight: 700;
 }
+@media (max-width: 768px) {
+  .header__container {
+    display: flex;
+    justify-content: center;
+  }
+}
 
 .track-bar {
   position: fixed;
@@ -52,13 +62,14 @@ a {
   min-width: 250px;
   z-index: 99;
   background-color: #fff;
-  box-shadow: 0 0 20px black;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.363);
   padding: 5px 8px;
   border-radius: 4px;
   transition: 0.3s bottom;
+  padding-bottom: 10px;
 }
 .track-bar.visible {
-  bottom: 10px;
+  bottom: 15px;
 }
 .track-bar__track-box {
   display: flex;
@@ -113,6 +124,11 @@ a {
   color: #fff;
   margin-bottom: 15px;
 }
+@media (max-width: 768px) {
+  .hero-section__title {
+    font-size: 34px;
+  }
+}
 .hero-section__descr {
   color: #fff;
 }
@@ -148,9 +164,32 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
+
+  list-style: none;
+  counter-reset: item;
+  padding-left: 0;
 }
-.chart-section__item::marker {
-  background-color: rgb(19, 19, 180);
+@media (max-width: 768px) {
+  .chart-section__list {
+    row-gap: 50px;
+  }
+}
+
+.chart-section__item {
+  position: relative;
+}
+.chart-section__item::before {
+  content: "#" counter(item);
+  counter-increment: item;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(255, 216, 40);
+  z-index: 1;
+  background-color: #1940ed;
+  padding: 5px;
 }
 @media (max-width: 768px) {
   .chart-section__list {
@@ -164,9 +203,13 @@ a {
 .track-card__img-box {
   position: relative;
   margin-bottom: 10px;
+  transition: 0.3s scale;
+}
+.track-card__img-box:hover {
+  scale: 0.95;
 }
 .track-card__img-box::after {
-  content: "▶";
+  content: "▶︎";
   position: absolute;
   display: flex;
   justify-content: center;
@@ -176,7 +219,7 @@ a {
   height: 100%;
   z-index: 1;
   color: transparent;
-  font-size: 36px;
+  font-size: 38px;
   cursor: pointer;
   transition: 0.5s color, 0.8s background-color;
 }
@@ -209,10 +252,17 @@ a {
 }
 @media (max-width: 768px) {
   .track-card {
-    max-width: 220px;
+    max-width: 140px;
   }
   .track-card__img {
-    width: 220px;
-    height: 220px;
+    width: 140px;
+    height: 140px;
+  }
+  .track-card__title {
+    font-size: 18px;
+  }
+  .track-card__artist {
+    font-size: 12px;
+    line-height: 1;
   }
 }

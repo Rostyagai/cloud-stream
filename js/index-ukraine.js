@@ -65,9 +65,11 @@ function displayHits(hits) {
       firstHit.album.images[0]?.url; // Update artist photo
     document.querySelector(
       ".hero-section__descr"
-    ).innerHTML = `Найвідоміший виконавець цього місяця: <br /><b>${firstHit.artists
+    ).innerHTML = `Найвідоміший виконавець цього місяця: <br /><a href="https://open.spotify.com/artist/${
+      firstHit.artists[0].id
+    }" target="_blank"><b>${firstHit.artists
       .map((artist) => artist.name)
-      .join(", ")}</b>`;
+      .join(", ")}</a></b>`;
   }
 
   hits.forEach((hit) => {
@@ -96,7 +98,9 @@ function displayHits(hits) {
     imgDiv.addEventListener("click", () => {
       const previewUrl = hit.track.preview_url;
       const trackTitle = hit.track.name;
-      const trackArtist = hit.track.artists[0].name;
+      const trackArtist = hit.track.artists
+        .map((artist) => artist.name)
+        .join(", ");
       const trackImage = hit.track.album.images[0]?.url;
 
       if (previewUrl) {
@@ -129,7 +133,7 @@ function displayHits(hits) {
           });
         }
       } else {
-        alert("No preview available for this track.");
+        alert("На жаль, в цього треку не існує демонстрації");
       }
     });
 
@@ -137,6 +141,7 @@ function displayHits(hits) {
     const title = document.createElement("h2");
     const trackLink = document.createElement("a");
 
+    trackLink.target = "_blank";
     trackLink.href = "https://open.spotify.com/track/" + hit.track.id;
     title.className = "track-card__title"; // Add class to h2
     trackLink.className = "track-card__title"; // Add class to h2
@@ -146,6 +151,7 @@ function displayHits(hits) {
 
     // Create a p element for the artist name
     const artist = document.createElement("a");
+    artist.target = "_blank";
     artist.className = "track-card__artist";
     artist.href = "https://open.spotify.com/artist/" + hit.track.artists[0].id; // Add class to p
     artist.textContent = `By ${hit.track.artists
